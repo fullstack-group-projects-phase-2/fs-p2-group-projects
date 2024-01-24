@@ -27,16 +27,20 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex space-x-4">
-          <button
-            className="p-2 rounded-full text-xs md:text-sm px-4 
-          focus:outline-none bg-white text-black hover:bg-blue-100 
-          hover:rounded-full hover:underline transition duration-200 
-          ease-in-out font-medium hover:shadow-md">
-            Login
-          </button>
+          <Link to={"/login"}>
+            <button
+              className="p-2 rounded-full text-xs md:text-sm px-4 
+            focus:outline-none bg-white text-black hover:bg-blue-100 
+            hover:rounded-full hover:underline transition duration-200 
+            ease-in-out font-medium hover:shadow-md"
+            >
+              Login
+            </button>
+          </Link>
           <i
             className="fa-solid fa-bars fa-2xl mt-4 cursor-pointer md:hidden lg:hidden"
-            style={{ color: "#fff" }}></i>
+            style={{ color: "#fff" }}
+          ></i>
         </div>
       </header>
     </div>
