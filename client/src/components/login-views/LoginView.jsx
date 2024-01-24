@@ -1,19 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userLogin } from "../../reduxs/slices/loginSlice";
 
 export default function LoginView() {
-  const users = useSelector((state) => {
-    return state.login.data;
-  });
-  console.log(users, "ini user login <<<<<<<<");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(userLogin(user));
+    navigate("/");
+  };
 
   const change = (e) => {
     setUser({
@@ -35,31 +37,29 @@ export default function LoginView() {
               />
             </div>
 
-            <form
-              className="md:w-8/12 lg:ml-[6rem] lg:w-5/12"
-              onSubmit={dispatch(userLogin())}
-            >
-              <div>
-                <div className="relative mb-6" data-te-input-wrapper-init>
+            <form onSubmit={handleSubmit}>
+              <div className="md:w-8/12 lg:ml-[6rem] lg:w-5/12">
+                <div className="relative mb-6">
+
                   <input
                     type="email"
                     className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                    id="exampleFormControlInput3"
                     placeholder="Email address"
                     value={user.email}
                     onChange={change}
+                    name="email"
                   />
                   <label className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
                     Email address
                   </label>
                 </div>
 
-                <div class="relative mb-6" data-te-input-wrapper-init>
+                <div className="relative mb-6">
                   <input
                     type="password"
                     className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                    id="exampleFormControlInput33"
                     placeholder="Password"
+                    name="password"
                     value={user.password}
                     onChange={change}
                     autoComplete="true"
@@ -67,15 +67,6 @@ export default function LoginView() {
                   <label className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
                     Password
                   </label>
-                </div>
-                <div className="flex items-center pb-6">
-                  <p className="mb-0 mr-2 text-black">Don't have an account?</p>
-                  <Link
-                    className="text-white hover:underline font-semibold"
-                    to={"/register"}
-                  >
-                    Register
-                  </Link>
                 </div>
 
                 <button
@@ -86,14 +77,22 @@ export default function LoginView() {
                 >
                   Sign in
                 </button>
-
-                <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
-                  <p className="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">
-                    OR
-                  </p>
-                </div>
               </div>
             </form>
+            <div className="flex items-center pb-6">
+              <p className="mb-0 mr-2 text-black">Don't have an account?</p>
+              <Link
+                className="text-white hover:underline font-semibold"
+                to={"/register"}>
+                Register
+              </Link>
+            </div>
+
+            <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+              <p className="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">
+                OR
+              </p>
+            </div>
           </div>
         </div>
       </section>

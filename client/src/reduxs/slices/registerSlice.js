@@ -15,21 +15,22 @@ export const registerSlice = createSlice({
   },
 });
 
+// Action creators are generated for each case reducer function
+export const { register } = registerSlice.actions;
+
 export function addUser(newUser) {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/register",
+        "http://localhost:3000/users/register",
         newUser
       );
+
       dispatch(register(data));
     } catch (error) {
       console.log(error);
     }
   };
 }
-
-// Action creators are generated for each case reducer function
-export const { newUser } = registerSlice.actions;
 
 export default registerSlice.reducer;
