@@ -1,8 +1,9 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import Layout from "../layouts/layout";
 import Hero from "../components/hero-views/hero-view";
-import LoginView from "../components/login-views/LoginView";
-import RegisterView from "../components/register-views/RegisterView";
+import Login from "../components/login-views/LoginView";
+import Register from "../components/register-views/RegisterView";
+import Dashboard from "../components/dashboard-views/dashboard-view";
 
 const router = createBrowserRouter([
   {
@@ -15,12 +16,16 @@ const router = createBrowserRouter([
         element: <Hero />,
       },
       {
-        path: "login",
-        element: <LoginView />,
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: "register",
-        element: <RegisterView />,
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },
