@@ -12,7 +12,7 @@ export default function Dashboard() {
               className="h-12 rounded-full w-[3rem] cursor-pointer transition-all duration-100 ease-out hover:scale-75"
             />
           </div>
-          <hr className="w-8 border-2 border-slate-500 mx-auto rounded" />
+          <hr className="w-8 border-2 border-white mx-auto rounded" />
           <img
             src={profile}
             alt="Profile"
@@ -25,7 +25,7 @@ export default function Dashboard() {
             ></i>
           </div>
         </div>
-        <div className="bg-[#7d85a0]">
+        <div className="bg-[#07051bd3]">
           <h2 className="flex font-bold text-sm items-center justify-between text-white border-b border-slate-800 p-4 hover:bg-[#34373c] cursor-pointer">
             Official d'talk...
             <i
@@ -88,8 +88,12 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-full">
-              <div className="text-lg font-semibold">Yoga</div>
-              <span className="text-gray-500">Pick me at 9:00 Am</span>
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Yoga
+              </div>
+              <span className="ml-2 text-white text-xs">
+                Pick me at 9:00 Am
+              </span>
             </div>
           </div>
           <div className="flex flex-row py-4 px-2 items-center border-b-2">
@@ -100,12 +104,15 @@ export default function Dashboard() {
                 alt=""
               />
             </div>
+
             <div className="w-full">
-              <div className="text-lg font-semibold">Judi Online</div>
-              <span className="text-gray-500">Hi Sam, Welcome</span>
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Judi Online
+              </div>
+              <span className="ml-2 text-white">Hi Sam, Welcome</span>
             </div>
           </div>
-          <div className="flex flex-row py-4 px-2 items-center border-b-2 border-l-4 border-blue-400">
+          <div className="flex flex-row py-4 px-2 items-center border-b-2 ">
             <div className="w-1/4">
               <img
                 src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
@@ -114,8 +121,10 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-full">
-              <div className="text-lg font-semibold">Stack.Com</div>
-              <span className="text-gray-500">Lusi : Thanks Everyone</span>
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Stack.Com
+              </div>
+              <span className="ml-2 text-white">Lusi : Thanks Everyone</span>
             </div>
           </div>
           <div className="flex flex-row py-4 px-2 items-center border-b-2">
@@ -127,8 +136,10 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-full">
-              <div className="text-lg font-semibold">Arma Yoga</div>
-              <span className="text-gray-500">
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Arma Yoga
+              </div>
+              <span className="ml-2 text-white">
                 Evan : some one can fix this
               </span>
             </div>
@@ -142,8 +153,10 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-full">
-              <div className="text-lg font-semibold">Javascript Indonesia</div>
-              <span className="text-gray-500">
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Javascript Indonesia
+              </div>
+              <span className="ml-2 text-white">
                 Evan : some one can fix this
               </span>
             </div>
@@ -167,7 +180,7 @@ export default function Dashboard() {
                 className="object-cover h-8 w-8 rounded-full"
                 alt=""
               />
-              <div className="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
+              <div className="ml-2 py-3 px-4 font-serif subpixel-antialiased text-justify bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
                 at praesentium, aut ullam delectus odio error sit rem.
                 Architecto nulla doloribus laborum illo rem enim dolor odio
@@ -176,9 +189,9 @@ export default function Dashboard() {
             </div>
             <div className="flex justify-end mb-4">
               <div>
-                <div className="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
+                <div className="mr-2 py-3 px-4 font-mono  bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Magnam, repudiandae.
+                  Magnam, repudiandae ajsdjasbdkasdna.
                 </div>
 
                 <div className="mt-4 mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
@@ -206,17 +219,12 @@ export default function Dashboard() {
           <form className="py-5">
             <div>
               <input
-                className="w-4/5 bg-gray-300 py-5 px-3 rounded-xl"
+                className="w-5/6 ml-20  bg-gray-300 py-2 px-3 rounded-xl"
                 type="text"
                 placeholder="type your message here..."
               />
-              <button
-                className="p-2 ml-10 rounded-full text-xs md:text-sm px-4 
-            focus:outline-none bg-white text-black hover:bg-blue-100 
-            hover:rounded-full hover:underline transition duration-200 
-            ease-in-out font-medium hover:shadow-md"
-              >
-                send
+              <button className="ml-5 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Send Message
               </button>
             </div>
           </form>
