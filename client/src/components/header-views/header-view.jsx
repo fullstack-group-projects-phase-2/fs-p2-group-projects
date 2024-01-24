@@ -1,8 +1,19 @@
 import "../../index.css";
 import logo from "../../assets/logo/dtalk-high-resolution-logo-white-transparent.png";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Header() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("access_token");
+    setLoggedIn(!!accessToken);
+  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("access_token");
+    isLoggedIn(false);
+    navigate("/login");
+  };
   return (
     <div>
       <header className="flex items-center justify-between py-4 px-6 text-white bg-[#295de7]">
@@ -27,16 +38,29 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex space-x-4">
-          <Link to={"/login"}>
-            <button
-              className="p-2 rounded-full text-xs md:text-sm px-4 
+          {!isLoggedIn ? (
+            <Link to={"/login"}>
+              <button
+                className="p-2 rounded-full text-xs md:text-sm px-4 
             focus:outline-none bg-white text-black hover:bg-blue-100 
             hover:rounded-full hover:underline transition duration-200 
             ease-in-out font-medium hover:shadow-md"
-            >
-              Login
-            </button>
-          </Link>
+              >
+                Login
+              </button>
+            </Link>
+          ) : (
+            <Link onClick={handleLogout}>
+              <button
+                className="p-2 rounded-full text-xs md:text-sm px-4 
+            focus:outline-none bg-white text-black hover:bg-blue-100 
+            hover:rounded-full hover:underline transition duration-200 
+            ease-in-out font-medium hover:shadow-md"
+              >
+                Logout
+              </button>
+            </Link>
+          )}
           <i
             className="fa-solid fa-bars fa-2xl mt-4 cursor-pointer md:hidden lg:hidden"
             style={{ color: "#fff" }}
