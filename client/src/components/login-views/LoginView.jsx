@@ -35,8 +35,11 @@ export default function LoginView() {
               />
             </div>
 
-            <form onSubmit={dispatch(userLogin())}>
-              <div className="md:w-8/12 lg:ml-[6rem] lg:w-5/12">
+            <form
+              className="md:w-8/12 lg:ml-[6rem] lg:w-5/12"
+              onSubmit={dispatch(userLogin())}
+            >
+              <div>
                 <div className="relative mb-6" data-te-input-wrapper-init>
                   <input
                     type="email"
@@ -69,7 +72,8 @@ export default function LoginView() {
                   <p className="mb-0 mr-2 text-black">Don't have an account?</p>
                   <Link
                     className="text-white hover:underline font-semibold"
-                    to={"/register"}>
+                    to={"/register"}
+                  >
                     Register
                   </Link>
                 </div>
@@ -78,7 +82,8 @@ export default function LoginView() {
                   type="submit"
                   className="bg-white text-black font-medium p-4 rounded-full text-lg hover:shadow-2xl hover:bg-blue-500  hover:text-white transition duration-200 ease-in-out w-full"
                   data-te-ripple-init
-                  data-te-ripple-color="light">
+                  data-te-ripple-color="light"
+                >
                   Sign in
                 </button>
 

@@ -35,8 +35,11 @@ const RegisterView = () => {
             <img src={logo} className="w-full" alt="Phone image" />
           </div>
 
-          <form onSubmit={dispatch(addUser())}>
-            <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
+          <form
+            className="md:w-8/12 lg:ml-6 lg:w-5/12"
+            onSubmit={dispatch(addUser())}
+          >
+            <div>
               <div className="relative mb-6" data-te-input-wrapper-init>
                 <input
                   type="text"
@@ -83,7 +86,8 @@ const RegisterView = () => {
                 type="submit"
                 className="bg-white text-black font-medium p-4 rounded-full text-lg hover:shadow-2xl hover:bg-blue-500  hover:text-white transition duration-200 ease-in-out w-full"
                 data-te-ripple-init
-                data-te-ripple-color="light">
+                data-te-ripple-color="light"
+              >
                 Sign Up
               </button>
 
