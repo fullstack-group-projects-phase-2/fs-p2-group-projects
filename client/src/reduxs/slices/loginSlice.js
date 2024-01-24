@@ -10,26 +10,30 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload }) => {
-      state.data = payload;
+      console.log(payload, "ini paylod <<<<<<");
+      state.data.push(payload);
     },
   },
 });
 
+// Action creators are generated for each case reducer function
+export const { login } = loginSlice.actions;
+
 export function userLogin(user) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post("http://localhost:3000/login", user);
+      const { data } = await axios.post(
+        "http://localhost:3000/users/login",
+        user
+      );
       const token = data.access_token;
-      localStorage.setItem("access_token", token);
+      const access_token = localStorage.setItem("access_token", token);
 
-      dispatch(login(token));
+      dispatch(login(access_token));
     } catch (error) {
       console.log(error);
     }
   };
 }
-
-// Action creators are generated for each case reducer function
-export const { login } = loginSlice.actions;
 
 export default loginSlice.reducer;
