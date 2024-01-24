@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+Link;
 export default function LoginView() {
   return (
     <>
@@ -35,6 +38,15 @@ export default function LoginView() {
                 <label className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
                   Password
                 </label>
+              </div>
+              <div className="flex items-center pb-6">
+                <p className="mb-0 mr-2 text-black">Don't have an account?</p>
+                <Link
+                  className="text-white hover:underline font-semibold"
+                  to={"/register"}
+                >
+                  Register
+                </Link>
               </div>
 
               <button
