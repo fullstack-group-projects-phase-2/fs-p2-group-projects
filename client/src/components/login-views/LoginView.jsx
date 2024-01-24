@@ -40,6 +40,7 @@ export default function LoginView() {
             <form onSubmit={handleSubmit}>
               <div className="md:w-8/12 lg:ml-[6rem] lg:w-5/12">
                 <div className="relative mb-6">
+
                   <input
                     type="email"
                     className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
@@ -72,7 +73,8 @@ export default function LoginView() {
                   type="submit"
                   className="bg-white text-black font-medium p-4 rounded-full text-lg hover:shadow-2xl hover:bg-blue-500  hover:text-white transition duration-200 ease-in-out w-full"
                   data-te-ripple-init
-                  data-te-ripple-color="light">
+                  data-te-ripple-color="light"
+                >
                   Sign in
                 </button>
               </div>

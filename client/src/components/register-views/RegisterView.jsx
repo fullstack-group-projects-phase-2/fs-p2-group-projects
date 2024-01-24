@@ -38,6 +38,7 @@ const RegisterView = () => {
           <form onSubmit={handleSubmit}>
             <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
               <div className="relative mb-6">
+
                 <input
                   type="text"
                   name="fullName"
