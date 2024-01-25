@@ -19,6 +19,12 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+        loader: () => {
+          if (localStorage.access_token) {
+            return redirect("/");
+          }
+          return null;
+        },
       },
       {
         path: "/register",
@@ -27,10 +33,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+        loader: () => {
+          if (!localStorage.access_token) {
+            return redirect("/login");
+          }
+          return null;
+        },
       },
       {
         path: "/rooms",
         element: <Room />,
+        loader: () => {
+          if (!localStorage.access_token) {
+            return redirect("/login");
+          }
+          return null;
+        },
       },
     ],
   },

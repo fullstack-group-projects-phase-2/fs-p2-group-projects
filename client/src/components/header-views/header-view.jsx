@@ -44,27 +44,25 @@ export default function Header() {
                 className="p-2 rounded-full text-xs md:text-sm px-4 
             focus:outline-none bg-white text-black hover:bg-blue-100 
             hover:rounded-full hover:underline transition duration-200 
-            ease-in-out font-medium hover:shadow-md"
-              >
+            ease-in-out font-medium hover:shadow-md">
                 Login
               </button>
             </Link>
           ) : (
-            <Link onClick={handleLogout}>
+            <Link>
               <button
+                onClick={handleLogout}
                 className="p-2 rounded-full text-xs md:text-sm px-4 
             focus:outline-none bg-white text-black hover:bg-blue-100 
             hover:rounded-full hover:underline transition duration-200 
-            ease-in-out font-medium hover:shadow-md"
-              >
+            ease-in-out font-medium hover:shadow-md">
                 Logout
               </button>
             </Link>
           )}
           <i
             className="fa-solid fa-bars fa-2xl mt-4 cursor-pointer md:hidden lg:hidden"
-            style={{ color: "#fff" }}
-          ></i>
+            style={{ color: "#fff" }}></i>
         </div>
       </header>
     </div>
