@@ -63,7 +63,7 @@ export default function Dashboard() {
               className="h-12 rounded-full w-[3rem] cursor-pointer transition-all duration-100 ease-out hover:scale-75"
             />
           </div>
-          <hr className="w-8 border-2 border-slate-500 mx-auto rounded" />
+          <hr className="w-8 border-2 border-white mx-auto rounded" />
           <img
             src={profile}
             alt="Profile"
@@ -75,7 +75,7 @@ export default function Dashboard() {
               style={{ color: "#fff" }}></i>
           </div>
         </div>
-        <div className="bg-[#7d85a0]">
+        <div className="bg-[#07051bd3]">
           <h2 className="flex font-bold text-sm items-center justify-between text-white border-b border-slate-800 p-4 hover:bg-[#34373c] cursor-pointer">
             Official d'talk...
             <i
@@ -137,11 +137,14 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-full">
-              <div className="text-lg font-semibold">Yoga</div>
-              <span className="text-gray-500">Pick me at 9:00 Am</span>
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Yoga
+              </div>
+              <span className="ml-2 text-white text-xs">
+                Pick me at 9:00 Am
+              </span>
             </div>
           </div>
-
           <div className="flex flex-row py-4 px-2 items-center border-b-2 border-l-4 border-blue-400">
             <div className="w-1/4">
               <img
@@ -151,8 +154,10 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-full">
-              <div className="text-lg font-semibold">Stack.Com</div>
-              <span className="text-gray-500">Lusi : Thanks Everyone</span>
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Stack.Com
+              </div>
+              <span className="ml-2 text-white">Lusi : Thanks Everyone</span>
             </div>
           </div>
           <div className="flex flex-row py-4 px-2 items-center border-b-2">
@@ -164,8 +169,10 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-full">
-              <div className="text-lg font-semibold">Arma Yoga</div>
-              <span className="text-gray-500">
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Arma Yoga
+              </div>
+              <span className="ml-2 text-white">
                 Evan : some one can fix this
               </span>
             </div>
@@ -179,8 +186,10 @@ export default function Dashboard() {
               />
             </div>
             <div className="w-full">
-              <div className="text-lg font-semibold">Javascript Indonesia</div>
-              <span className="text-gray-500">
+              <div className="ml-2  text-bs text-white  font-semibold ">
+                Javascript Indonesia
+              </div>
+              <span className="ml-2 text-white">
                 Evan : some one can fix this
               </span>
             </div>
@@ -201,7 +210,6 @@ export default function Dashboard() {
                   </div>
                 );
               })}
-
               <img
                 src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
                 className="object-cover h-8 w-8 rounded-full"
@@ -215,7 +223,7 @@ export default function Dashboard() {
                 name="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-4/5 bg-gray-300 py-5 px-3 rounded-xl"
+                className="w-5/6 ml-20 bg-gray-300 py-2 px-5 rounded-xl"
                 type="text"
                 placeholder="type your message here..."
               />
