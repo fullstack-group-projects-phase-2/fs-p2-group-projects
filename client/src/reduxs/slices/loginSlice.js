@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../components/instances/instance";
 
 const initialState = {
   data: [],
@@ -22,10 +22,7 @@ export const { login } = loginSlice.actions;
 export function userLogin(user) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(
-        "http://localhost:3000/users/login",
-        user
-      );
+      const { data } = await axios.post("/users/login", user);
       const token = data.access_token;
       const access_token = localStorage.setItem("access_token", token);
 

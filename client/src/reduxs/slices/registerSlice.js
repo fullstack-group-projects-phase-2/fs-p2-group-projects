@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../components/instances/instance";
 
 const initialState = {
   data: {},
@@ -21,10 +21,7 @@ export const { register } = registerSlice.actions;
 export function addUser(newUser) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(
-        "http://localhost:3000/users/register",
-        newUser
-      );
+      const { data } = await axios.post("/users/register", newUser);
 
       dispatch(register(data));
     } catch (error) {
