@@ -72,7 +72,8 @@ export default function Dashboard() {
           <div className="rounded-full h-12 bg-[#000] hover:bg-green-900 transition duration-300 ease-in-out">
             <i
               className="fa-solid fa-plus fa-2xl flex justify-center mt-6"
-              style={{ color: "#fff" }}></i>
+              style={{ color: "#fff" }}
+            ></i>
           </div>
         </div>
         <div className="bg-[#07051bd3]">
@@ -80,7 +81,8 @@ export default function Dashboard() {
             Official d'talk...
             <i
               className="fa-solid fa-chevron-down h-2 ml-12"
-              style={{ color: "#ffffff" }}></i>
+              style={{ color: "#ffffff" }}
+            ></i>
           </h2>
           {/* <div className="text-[#839297] flex-grow overflow-y-scroll scrollbar-hide">
             <div className="flex items-center p-2 mb-2">
@@ -205,7 +207,8 @@ export default function Dashboard() {
                 return (
                   <div
                     key={i}
-                    className="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
+                    className="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white"
+                  >
                     <p className="text-white">{el.text}</p>
                   </div>
                 );
@@ -232,7 +235,8 @@ export default function Dashboard() {
                 className="p-2 ml-10 rounded-full text-xs md:text-sm px-4 
             focus:outline-none bg-white text-black hover:bg-blue-100 
             hover:rounded-full hover:underline transition duration-200 
-            ease-in-out font-medium hover:shadow-md">
+            ease-in-out font-medium hover:shadow-md"
+              >
                 send
               </button>
             </div>
