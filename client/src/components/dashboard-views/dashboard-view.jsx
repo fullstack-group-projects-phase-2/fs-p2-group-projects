@@ -1,6 +1,57 @@
 import profile from "../../assets/logo/dtalk-high-resolution-logo-white-transparent.png";
+import { socket } from "../../helpers/socket";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Dashboard() {
+  const [id, setId] = useState("");
+  const [message, setMessage] = useState("");
+  const [chat, setChat] = useState("");
+  const [chats, setChats] = useState([]);
+  // const [user, setUser] = useState([]);
+
+  // const fetchUser = async () => {
+  //   try {
+  //     const { data } = await axios.get("http://localhost:3000/users");
+
+  //     console.log(data, ">>>>>>>>>>");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const fetchChats = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:3000/messages");
+
+      setChats(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchChats();
+  }, []);
+
+  useEffect(() => {
+    socket.on("chat-message", (id) => {
+      setId(id);
+    });
+
+    socket.on("receive-messsage", (payload) => {
+      setChat((previousChats) => [...previousChats, payload]);
+    });
+  }, [socket]);
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    socket.emit("message-send", message);
+    setMessage("");
+  };
+
+  console.log(chat, ">>>");
+
   return (
     <>
       <div className="flex h-screen">
@@ -21,8 +72,7 @@ export default function Dashboard() {
           <div className="rounded-full h-12 bg-[#000] hover:bg-green-900 transition duration-300 ease-in-out">
             <i
               className="fa-solid fa-plus fa-2xl flex justify-center mt-6"
-              style={{ color: "#fff" }}
-            ></i>
+              style={{ color: "#fff" }}></i>
           </div>
         </div>
         <div className="bg-[#07051bd3]">
@@ -30,8 +80,7 @@ export default function Dashboard() {
             Official d'talk...
             <i
               className="fa-solid fa-chevron-down h-2 ml-12"
-              style={{ color: "#ffffff" }}
-            ></i>
+              style={{ color: "#ffffff" }}></i>
           </h2>
           {/* <div className="text-[#839297] flex-grow overflow-y-scroll scrollbar-hide">
             <div className="flex items-center p-2 mb-2">
@@ -96,23 +145,7 @@ export default function Dashboard() {
               </span>
             </div>
           </div>
-          <div className="flex flex-row py-4 px-2 items-center border-b-2">
-            <div className="w-1/4">
-              <img
-                src="https://source.unsplash.com/otT2199XwI8/600x600"
-                className="object-cover h-12 w-12 rounded-full"
-                alt=""
-              />
-            </div>
-
-            <div className="w-full">
-              <div className="ml-2  text-bs text-white  font-semibold ">
-                Judi Online
-              </div>
-              <span className="ml-2 text-white">Hi Sam, Welcome</span>
-            </div>
-          </div>
-          <div className="flex flex-row py-4 px-2 items-center border-b-2 ">
+          <div className="flex flex-row py-4 px-2 items-center border-b-2 border-l-4 border-blue-400">
             <div className="w-1/4">
               <img
                 src="https://source.unsplash.com/L2cxSuKWbpo/600x600"
@@ -164,67 +197,43 @@ export default function Dashboard() {
         </div>
         <div className="w-full px-5 flex flex-col justify-between bg-gray-700">
           <div className="flex flex-col mt-5">
-            <div className="flex justify-end mb-4">
-              <div className="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
-                Welcome to group everyone !
-              </div>
-              <img
-                src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-                className="object-cover h-8 w-8 rounded-full"
-                alt=""
-              />
-            </div>
-            <div className="flex justify-start mb-4">
-              <img
-                src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-                className="object-cover h-8 w-8 rounded-full"
-                alt=""
-              />
-              <div className="ml-2 py-3 px-4 font-serif subpixel-antialiased text-justify bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-                at praesentium, aut ullam delectus odio error sit rem.
-                Architecto nulla doloribus laborum illo rem enim dolor odio
-                saepe, consequatur quas?
-              </div>
+            <div className="text-white">
+              Global Chat : {id} : {chat}
             </div>
             <div className="flex justify-end mb-4">
-              <div>
-                <div className="mr-2 py-3 px-4 font-mono  bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Magnam, repudiandae ajsdjasbdkasdna.
-                </div>
-
-                <div className="mt-4 mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Debitis, reiciendis!
-                </div>
-              </div>
+              {chats.map((el, i) => {
+                return (
+                  <div
+                    key={i}
+                    className="mr-2 py-3 px-4 bg-blue-400 rounded-bl-3xl rounded-tl-3xl rounded-tr-xl text-white">
+                    <p className="text-white">{el.text}</p>
+                  </div>
+                );
+              })}
               <img
                 src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
                 className="object-cover h-8 w-8 rounded-full"
                 alt=""
               />
-            </div>
-            <div className="flex justify-start mb-4">
-              <img
-                src="https://source.unsplash.com/vpOeXr5wmR4/600x600"
-                className="object-cover h-8 w-8 rounded-full"
-                alt=""
-              />
-              <div className="ml-2 py-3 px-4 bg-gray-400 rounded-br-3xl rounded-tr-3xl rounded-tl-xl text-white">
-                happy holiday guys!
-              </div>
             </div>
           </div>
-          <form className="py-5">
+          <form onSubmit={sendMessage} className="py-5">
             <div>
               <input
-                className="w-5/6 ml-20  bg-gray-300 py-2 px-3 rounded-xl"
+                name="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-5/6 ml-20 bg-gray-300 py-2 px-5 rounded-xl"
                 type="text"
                 placeholder="type your message here..."
               />
-              <button className="ml-5 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Send Message
+              <button
+                type="submit"
+                className="p-2 ml-10 rounded-full text-xs md:text-sm px-4 
+            focus:outline-none bg-white text-black hover:bg-blue-100 
+            hover:rounded-full hover:underline transition duration-200 
+            ease-in-out font-medium hover:shadow-md">
+                send
               </button>
             </div>
           </form>
